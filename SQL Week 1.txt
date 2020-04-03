@@ -16,16 +16,16 @@ SELECT FirstName, MiddleName, LastName, EmailAddress, Phone FROM SalesLT.Custome
 
 The following is a portion of the columns obtained:
 FirstName	MiddleName	LastName	EmailAddress				Phone
-Orlando	N.		Gee		dolittleklaz@yahoo.com		240-271-2334
-Keith		NULL		Harris		keith0@adevnture-works.com	170-555-0127
-Donna		F.		Carreras	donna0@adventure-works.com	279-555-0130
-Janet		M.		Gates		janet1@adventure-works.com	710-555-0173
+Orlando		N.		Gee		dolittleklaz@yahoo.com			240-271-2334
+Keith		NULL		Harris		keith0@adevnture-works.com		170-555-0127
+Donna		F.		Carreras	donna0@adventure-works.com		279-555-0130
+Janet		M.		Gates		janet1@adventure-works.com		710-555-0173
 Lucy		NULL		Harrington	lucy0@adventure-works.com		828-555-0186
-Rosmarie	J.		Carroll		rosmarie0@adventure-works.com	244-555-0112
-Dominic	P.		Gash		dominic0@adventure-works.com	192-555-0173
-Kathleen	M.		Garza		kathleen0@adventure-works.com	150-555-0127
-Katherine	NULL		Harding	katherine0@adventure-works.com	926-555-0159
-Johnny		A.		Caprio		johnny0@adventure-works.com	112-555-0191
+Rosmarie	J.		Carroll		rosmarie0@adventure-works.com		244-555-0112
+Dominic	P.			Gash		dominic0@adventure-works.com		192-555-0173
+Kathleen	M.		Garza		kathleen0@adventure-works.com		150-555-0127
+Katherine	NULL		Harding		katherine0@adventure-works.com		926-555-0159
+Johnny		A.		Caprio		johnny0@adventure-works.com		112-555-0191
 Christopher	R.		Beck		christopher1@adventure-works.com	1 (11) 500 555-0132
 
 3. The Assistant Manager of the IT department wants to see a list of all the products, i.e. ….
