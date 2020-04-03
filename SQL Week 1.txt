@@ -1,0 +1,45 @@
+Wumy
+
+1. Question: Give all the information in the customer table.
+Answer:
+Select* FROM SalesLT.Customer
+	
+Information From the Customer Table: 
+1. CustomerID	2. NameStyle	3. Title	4. Title	5. FirstName	6. MiddleName	7. LastName
+8. Suffix	9. CompanyName	10. SalesPerson	11. EmailAddress 	12. Phone
+13. PasswordHash	14. PasswordSalt	15. Rowguid	16. ModifiedDate
+
+2. Question: The IT Manager of your department asked you to produce a report of a customer's
+ 	1. First name 2. Middle name 3.Last name 4. Email address 5. Phone number
+Answer:
+SELECT FirstName, MiddleName, LastName, EmailAddress, Phone FROM SalesLT.Customer
+
+The following is a portion of the columns obtained:
+FirstName	MiddleName	LastName	EmailAddress				Phone
+Orlando	N.		Gee		dolittleklaz@yahoo.com		240-271-2334
+Keith		NULL		Harris		keith0@adevnture-works.com	170-555-0127
+Donna		F.		Carreras	donna0@adventure-works.com	279-555-0130
+Janet		M.		Gates		janet1@adventure-works.com	710-555-0173
+Lucy		NULL		Harrington	lucy0@adventure-works.com		828-555-0186
+Rosmarie	J.		Carroll		rosmarie0@adventure-works.com	244-555-0112
+Dominic	P.		Gash		dominic0@adventure-works.com	192-555-0173
+Kathleen	M.		Garza		kathleen0@adventure-works.com	150-555-0127
+Katherine	NULL		Harding	katherine0@adventure-works.com	926-555-0159
+Johnny		A.		Caprio		johnny0@adventure-works.com	112-555-0191
+Christopher	R.		Beck		christopher1@adventure-works.com	1 (11) 500 555-0132
+
+3. The Assistant Manager of the IT department wants to see a list of all the products, i.e. ….
+Answer:
+SELECT * FROM SalesLT.Product
+SELECT Name, Color, Size, Weight, SellStartDate, (ListPrice - StandardCost) As Profit FROM SalesLT.Product
+
+4.  Question: Add date they stopped selling to #3 above.
+Answer:
+SELECT Name, Color, Size, Weight, SellStartDate, (ListPrice - StandardCost) As Profit, SellEndDate FROM SalesLT.Product
+
+Sample table shown below:
+Name				Color	Size	Weight	   SellStartDate			Profit	SellEndDate
+HL Road Frame - Black, 58	Black	58	1016.04	  1998-06-01 00:00:00.000	372.19	NULL
+HL Road Frame - Red, 58	Red	58	1016.04	  1998-06-01 00:00:00.000	372.19	NULL
+
+
