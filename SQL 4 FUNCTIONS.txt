@@ -1,0 +1,110 @@
+WUMY
+SQL 4
+
+
+SCALAR FUNCTIONS
+1.	SELECT UPPER(FabName) AS Product FROM dbo.MyDiligentFab;
+RESULT: 
+Product
+MENSUIT
+MENPANT
+MENSHIRT
+MENSOCKS
+2.	SELECT UnitCost, ListPrice, ListPrice-UnitCost AS PROFIT
+	FROM dbo.MyDiligentFab;
+RESULTS
+UnitCost	ListPrice	PROFIT
+15.00		20.00		5.00
+7.00		11.00		4.00
+6.00		10.00		4.00
+2.00		4.00		2.00
+3.	SELECT FabName, Quantity, ListPrice, Quantity*ListPrice AS TotalAmount
+	FROM dbo.MyDiligentFab
+RESULTS:
+FabName		Quantity	ListPrice	TotalAmount
+MenSuit		3		20.00		60.00
+MenPant		4		11.00		44.00
+MenShirt	10		10.00		100.00
+MenSocks	12		4.00		48.00
+4.	SELECT CustomerID, CONCAT(FirstName + ' ', LastName) AS FullName
+	FROM dbo.MyDiligentCustomers;
+RESULT
+CustomerID	FullName
+1		James Brown
+2		John Car
+3		Steve Wood
+4		Pin Crown
+5		James King
+
+LOGICAL FUNCTIONS
+1.	SELECT FabName, IIF(Quantity BETWEEN 5 AND 10, 'Suit', 'Others') ProductType
+	FROM dbo.MyDiligentFab
+RESULT:
+FabName		ProductType
+MenSuit		Others
+MenPant		Others
+MenShirt	Suit
+MenSocks	Others
+MenTie		Others
+WomenSuit	Suit
+WomenSkirt	Others
+
+2.	SELECT FabName, FabID AS ID FROM dbo.MyDiligentFab 
+	WHERE ISNUMERIC(FabID) =20;
+AGGREGATE FUNCTIONS
+1.	SELECT COUNT(DISTINCT CustomerOrderNumber) AS CONo FROM 	dbo.MyDiligentCustomers;
+RESULTS
+	CONo
+	20
+2. 	Select AVG(ListPrice) AS MeanPrice FROM dbo.MyDiligentFab
+Result
+MeanPrice
+8.3125
+3.	SELECT COUNT(Quantity) 
+   	 FROM dbo.MyDiligentFab 
+  	WHERE UnitCost >= 5
+RESULT:	(No column name)
+		18
+WINDOW FUNCTIONS
+GROUP BY AND HAVING CLAUSES
+1.	SELECT COUNT(FabName) AS ItemCount, UnitCost
+	FROM dbo.MyDiligentFab
+	GROUP BY UnitCost
+RESULTS	
+ItemCount	UnitCost
+2		1.00
+4		2.00
+6		3.00
+2		4.00
+2.	SELECT COUNT(FabName) AS ItemCount, UnitCost
+	FROM dbo.MyDiligentFab
+	GROUP BY UnitCost
+	ORDER BY COUNT(FabName) DESC;
+RESULT: 
+ItemCount	UnitCost
+ 6		3.00
+ 6		5.00
+ 4		6.00
+ 4		2.00
+ 2		1.00
+3.	SELECT COUNT(FabName) AS ItemCount, ListPrice
+	FROM dbo.MyDiligentFab
+	GROUP BY ListPrice
+	HAVING COUNT(FabName) >=2;
+RESULT:	
+ItemCount	ListPrice
+2		2.00
+4		4.00
+6		5.00
+4		7.00
+
+4.	SELECT COUNT(FabName) AS ItemCount, UnitCost
+	FROM dbo.MyDiligentFab
+	GROUP BY UnitCost
+	HAVING COUNT(FabName) >= 4;
+RESULT:	
+ItemCount	UnitCost
+4		2.00
+6		3.00
+6		5.00
+4		6.00
