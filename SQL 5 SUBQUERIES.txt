@@ -1,0 +1,59 @@
+WUMY
+
+	SUBQUERIES
+	A. SCALAR
+
+1.	/* List the product sold at the cheapest list price*/
+	SELECT * FROM SalesLT.Product 
+	WHERE ListPrice = (SELECT MIN(UnitPrice) FROM SalesLT.SalesOrderDetail)
+
+2.	SELECT * FROM SalesLT.Product 
+	WHERE ProductID = (SELECT MAX(UnitPrice) FROM SalesLT.SalesOrderDetail)	
+3.	SELECT * FROM SalesLT.Product 
+	WHERE ProductID = (SELECT MAX(ListPrice) FROM SalesLT.Product)
+	ORDER BY ProductID DESC;
+	
+	B. MULTIVALUE 
+
+4.	/* List all the products been sold by thecompany */
+	SELECT * FROM SalesLT.Product 
+	WHERE ProductID IN (SELECT ProductID FROM SalesLT.SalesOrderDetail)
+	ORDER BY ProductID DESC;
+
+5.	/* How many types of product  does the company sell? */
+	SELECT COUNT(Distinct ProductcategoryID)  FROM SalesLT.Product 
+	WHERE ProductcategoryID IN (SELECT ProductcategoryID FROM SalesLT.ProductCategory)
+
+6.	SELECT COUNT(*)  FROM SalesLT.Product 
+	WHERE StandardCost <= (SELECT AVG(UnitPrice) FROM SalesLT.SalesorderDetail)
+
+7.	/* List the products that were acquired at or below the average selling price for all products */
+
+	SELECT *  FROM SalesLT.Product 
+	WHERE StandardCost <= (SELECT AVG(UnitPrice) FROM SalesLT.SalesorderDetail)
+	ORDER By ProductID DESC;
+
+8.	/*  list of all products whose Listprice is above the average for all products*/
+
+	SELECT ProductNumber, Name FROM SalesLT.Product  WHERE ListPrice > (SELECT AVG(ListPrice)FROM SalesLT.Product)
+
+	C. CORRELATED
+
+9.	/* What was the first purchase made by each of the customers? */
+	SELECT CustomerID, SalesOrderID
+	FROM SalesLT.SalesOrderHeader AS SO1
+	WHERE SalesOrderID =
+	(SELECT MIN(SalesOrderID)
+	FROM SalesLT.SalesOrderHeader AS SO2
+	WHERE SO2.CustomerID = SO1.CustomerID)
+	ORDER BY CustomerID
+
+10.	/* For every customer's account, list the last sales made*/
+
+	SELECT AccountNumber, SalesOrderID, SalesOrderNumber
+	FROM SalesLT.SalesOrderHeader AS AC1
+	WHERE SalesOrderID =
+	(SELECT MAX(SalesOrderID)
+	FROM SalesLT.SalesOrderHeader AS AC2
+	WHERE AC2.AccountNumber = AC1.AccountNumber)
+
